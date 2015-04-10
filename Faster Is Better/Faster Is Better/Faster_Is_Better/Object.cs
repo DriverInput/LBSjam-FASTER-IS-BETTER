@@ -36,6 +36,8 @@ namespace Faster_Is_Better
 
         public Vector2 velocity;
 
+        public int majs;
+
         public Rectangle rectangle
         {
             get
