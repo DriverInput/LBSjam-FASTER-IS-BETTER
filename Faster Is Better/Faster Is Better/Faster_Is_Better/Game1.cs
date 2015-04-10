@@ -19,9 +19,13 @@ namespace Faster_Is_Better
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        List<object> objects = new List<object>();
+        
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
+            graphics.PreferredBackBufferWidth = 640;
+            graphics.PreferredBackBufferHeight = 480;
             Content.RootDirectory = "Content";
         }
 
@@ -34,7 +38,7 @@ namespace Faster_Is_Better
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-
+            objects.Add(new Player());
             base.Initialize();
         }
 
@@ -70,7 +74,10 @@ namespace Faster_Is_Better
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
-            // TODO: Add your update logic here
+            foreach (Object obj in objects)
+            {
+                obj.Update();
+            }
 
             base.Update(gameTime);
         }
@@ -81,9 +88,12 @@ namespace Faster_Is_Better
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.HotPink);
 
-            // TODO: Add your drawing code here
+            foreach (Object obj in objects)
+            {
+                obj.Draw(spriteBatch);
+            }
 
             base.Draw(gameTime);
         }

@@ -11,7 +11,7 @@ using Microsoft.Xna.Framework.Media;
 
 namespace Faster_Is_Better
 {
-    class Object
+    abstract class Object
     {
         public Texture2D texture;
         public Vector2 position;
@@ -81,6 +81,8 @@ namespace Faster_Is_Better
                 }
             }
         }
+
+        public abstract void Update();
 
         public int maxFrameTimer = 5;
 
