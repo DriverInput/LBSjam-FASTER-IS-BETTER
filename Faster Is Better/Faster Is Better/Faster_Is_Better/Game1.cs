@@ -20,6 +20,8 @@ namespace Faster_Is_Better
         SpriteBatch spriteBatch;
 
         List<object> objects = new List<object>();
+
+        Texture2D texture;
         
         public Game1()
         {
@@ -38,7 +40,9 @@ namespace Faster_Is_Better
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            objects.Add(new Player());
+            texture = new Texture2D(GraphicsDevice, 1, 1);
+            texture.SetData<Color>(new Color[] { Color.White });
+            objects.Add(new Player(texture, Vector2.One));
             base.Initialize();
         }
 
@@ -88,13 +92,13 @@ namespace Faster_Is_Better
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.HotPink);
-
+            GraphicsDevice.Clear(Color.Black);
+            spriteBatch.Begin();
             foreach (Object obj in objects)
             {
                 obj.Draw(spriteBatch);
             }
-
+            spriteBatch.End();
             base.Draw(gameTime);
         }
     }
