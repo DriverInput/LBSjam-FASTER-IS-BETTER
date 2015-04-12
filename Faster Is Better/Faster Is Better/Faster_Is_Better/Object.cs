@@ -19,6 +19,7 @@ namespace Faster_Is_Better
 
         public int width;
         public int height;
+        public Color color;
         public float angle;
         public float angleOffset;
         public Vector2 origin;
@@ -83,7 +84,7 @@ namespace Faster_Is_Better
 
         public void Draw(SpriteBatch sb)
         {
-            sb.Draw(texture, rectangle, sourceRectangle, Color.Red, angle + angleOffset, origin, SpriteEffects.None, 1f);
+            sb.Draw(texture, rectangle, sourceRectangle, color, angle + angleOffset, origin, SpriteEffects.None, 1f);
         }
 
         public static Vector2 RectangleToRectangle(float x1, float y1, int w1, int h1, float x2, float y2, int w2, int h2)

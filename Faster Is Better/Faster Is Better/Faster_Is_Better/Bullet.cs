@@ -11,30 +11,25 @@ using Microsoft.Xna.Framework.Media;
 
 namespace Faster_Is_Better
 {
-    class Player : Object
+    class Bullet : Object
     {
-        int dir;
-
-        public Player(Texture2D newTex, Vector2 newPos)
+        public Bullet(Texture2D newTex, Vector2 newPos, float newAngle)
         {
             texture = newTex;
             position = newPos;
-            width = 32;
-            height = 32;
-            color = Color.Red;
-            origin = Vector2.One * width / 2;
+            color = Color.Yellow;
+            width = 8;
+            height = 8;
+            origin = Vector2.One * 4;
+            //angle = newAngle;
+            //velocity.X = (float)Math.Cos(MathHelper.ToRadians(newAngle));
+            //velocity.Y = (float)Math.Sin(MathHelper.ToRadians(newAngle));
+            Console.WriteLine("Spawned bullet");
         }
 
         public override void Update()
         {
-
-            position.X = Mouse.GetState().X;
-            position.Y = Mouse.GetState().Y;
-        }
-
-        private bool KeyDown(Keys key)
-        {
-            return Keyboard.GetState().IsKeyDown(key);
+            //position += velocity * Game1.globalTime;
         }
     }
 }
